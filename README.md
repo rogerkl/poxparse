@@ -37,7 +37,7 @@ Then right click on the UART:RX row and choose "Export all annotations for this 
 ### parsing the data from pulseview
 Run 
 
->python parse_pv_uart_ann.py <filename>
+>python parse_pv_uart_ann.py {filename}
 
 The file should be the annotations exported from pulseview, it will then save it to a file {filename}.bin
 
@@ -52,7 +52,7 @@ The spec says the HR goes from 18 to 300 with reduced resolution to 2 points fro
 ## parse the binary data
 Run 
 
->python parse_pox_data.py <filename>
+>python parse_pox_data.py {filename}
 
 where filename is the file created earlier with binary data.
 It will create one file pr. session in the data, each called {inputfile}.{number}.csv where number is the session number exported. The sessions are exported newest first.
@@ -77,13 +77,13 @@ Although the other scripts should work with both python 2.7 and python 3 I have 
 
 Run 
 
->python plot_pd_data.py <filename>
+>python plot_pd_data.py {filename}
 
 where input filename is a csv-file created by parse_pox_data.py script over
 If you only want to show a single item on the X-Axis run with
 
->python plot_pd_data.py <filename> SpO2
+>python plot_pd_data.py {filename} SpO2
 
 or
 
->python plot_pd_data.py <filename> Hr
+>python plot_pd_data.py {filename} Hr
