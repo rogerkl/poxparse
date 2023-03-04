@@ -67,3 +67,23 @@ The fields exported are
 
 Since the export contains an 1/0 if the SpO2 reading is in that range or not, you could easily sum them up in the spreadsheet and calculate % based on the # of total points
 
+
+### Simple plot of data
+
+plot_pd_data.py displays a simple plot of the data from a pulse oximeter session using mathplotlib
+
+This requires pandas and mathplotlib to be installed
+Although the other scripts should work with both python 2.7 and python 3 I have only tested the plot on python 3
+
+Run 
+
+>python plot_pd_data.py <filename>
+
+where input filename is a csv-file created by parse_pox_data.py script over
+If you only want to show a single item on the X-Axis run with
+
+>python plot_pd_data.py <filename> SpO2
+
+or
+
+>python plot_pd_data.py <filename> Hr
