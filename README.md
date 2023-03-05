@@ -80,10 +80,7 @@ Run
 >python plot_pd_data.py {filename}
 
 where input filename is a csv-file created by parse_pox_data.py script over
-If you only want to show a single item on the X-Axis run with
 
->python plot_pd_data.py {filename} SpO2
+To smooth the graph you can add a second argument for the number of 4s frames to smooth over (rolling mean)
 
-or
-
->python plot_pd_data.py {filename} Hr
+>python plot_pd_data.py {filename} 3
