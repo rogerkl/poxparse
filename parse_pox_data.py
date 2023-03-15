@@ -27,7 +27,6 @@ def ordx(s):
         return s
     return ord(s)
 
-
 def main(file):
     start_session = binascii.unhexlify('FEFEFC')
     end_data = binascii.unhexlify('000000000000000000000000000000000000')
