@@ -65,7 +65,7 @@ def inGroup(df, low, high):
     return result
 
 
-def main(file, mean):
+def main(file, mean, saveFormat):
     fname = os.path.basename(file)
     data = pd.read_csv(file, parse_dates=[TIME])
 
@@ -143,17 +143,27 @@ def main(file, mean):
         data[HR] = data[HR].rolling(mean).mean()
 
     df = pd.DataFrame(data, columns=[TIME, HR, 'drops below 4%', SPO2])
+
+    plt.rcParams['figure.figsize'] = [11.7, 8.3]
+    plt.rcParams.update({'font.size': 6})
+
     ax = df.plot(x=TIME, style={SPO2: 'b',
                                 HR: 'Green', 'drops below 4%': 'Red'}, title=title)
     ax.lines[0].set_alpha(0.5)
     ax.lines[1].set_alpha(0.35)
     ax.set_ylim(50, 110)
 
-    plt.figtext(0.02, 0.5, text, fontsize=10)
+    plt.figtext(0.02, 0.5, text, fontsize=6)
     plt.gcf().canvas.manager.set_window_title(fname)
-    plt.show()
+    if saveFormat != None:
+        plt.savefig(file+"."+saveFormat,
+                    # bbox_inches='tight',
+                    orientation='landscape', format=saveFormat)
+    else:
+        plt.show()
 
 
 if __name__ == "__main__":
     main(sys.argv[1],
-         int(sys.argv[2]) if len(sys.argv) > 2 else None)
+         int(sys.argv[2]) if len(sys.argv) > 2 else None,
+         sys.argv[3] if len(sys.argv) > 3 else None)
